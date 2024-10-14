@@ -1,0 +1,100 @@
+// Base class
+class Person {
+    protected String name;
+    protected int age;
+
+    // name and age
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to print 
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Student class information
+class Student extends Person {
+    private String studentID;
+    private String course;
+    private int units;
+    private final int feePerUnit = 1000;
+
+    
+    public Student(String name, int age, String studentID, String course, int units) {
+        super(name, age);
+        this.studentID = studentID;
+        this.course = course;
+        this.units = units;
+    }
+
+    // Calculate total fees based on units
+    public double calculateFees() {
+        return units * feePerUnit;
+    }
+
+    // Print and run details
+    @Override
+    public void displayInfo() {
+        super.displayInfo(); // Print name and age
+        System.out.println("Student ID: " + studentID);
+        System.out.println("Course: " + course);
+        System.out.println("Units: " + units);
+        System.out.println("Total Fee: " + calculateFees());
+    }
+}
+
+// Instructor class information
+class Instructor extends Person {
+    private String employeeID;
+    private String department;
+    private double salary;
+
+    // Constructor info
+    public Instructor(String name, int age, String employeeID, String department, double salary) {
+        super(name, age); // Call parent constructor
+        this.employeeID = employeeID;
+        this.department = department;
+        this.salary = salary;
+    }
+
+    // Print instructor details
+    @Override
+    public void displayInfo() {
+        super.displayInfo(); // Print name and age
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Department: " + department);
+        System.out.println("Salary: " + salary + " pesos");
+    }
+}
+
+// input that will be print
+public class UniversityEnrollmentSystem {
+    public static void main(String[] args) {
+        // Create students and display their info
+        Student student1 = new Student("Joefel Coralde", 19, "231000323", "BS Computer Engineering", 15);
+        Student student2 = new Student("France Kaye Tormes", 20, "231005110", "BS Computer Engineering", 15);
+
+        System.out.println("Student 1:");
+        student1.displayInfo();
+        System.out.println();
+
+        System.out.println("Student 2:");
+        student2.displayInfo();
+        System.out.println();
+
+        // Create instructors and display their information
+        Instructor instructor1 = new Instructor("Engr. Tanya Jovillano", 25, "C2310098", "College of Engineering & Architecture", 1000);
+        Instructor instructor2 = new Instructor("Engr. Eric Velitario", 36, "C23100021", "College of Engineering & Architecture", 1000);
+
+        System.out.println("Instructor 1:");
+        instructor1.displayInfo();
+        System.out.println();
+
+        System.out.println("Instructor 2:");
+        instructor2.displayInfo();
+    }
+}
